@@ -15679,6 +15679,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Demo\\Edit.cshtml",
+      "TargetPath": "Views\\Demo\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Demo\\Details.cshtml",
+      "TargetPath": "Views\\Demo\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"
@@ -15744,6 +15754,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Demo\\Create.cshtml",
+      "TargetPath": "Views\\Demo\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
@@ -15751,6 +15766,11 @@
     {
       "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Employee\\Index.cshtml",
       "TargetPath": "Views\\Employee\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Demo\\Delete.cshtml",
+      "TargetPath": "Views\\Demo\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15766,6 +15786,11 @@
     {
       "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Movie\\Edit.cshtml",
       "TargetPath": "Views\\Movie\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "e:\\NETcore\\MVCMovie\\Views\\Demo\\Index.cshtml",
+      "TargetPath": "Views\\Demo\\Index.cshtml",
       "FileKind": "mvc"
     },
     {

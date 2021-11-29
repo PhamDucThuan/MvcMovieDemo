@@ -29,6 +29,8 @@ using MVCMovie.Models;
         public DbSet<MVCMovie.Models.Category> Category { get; set; }
 
         public DbSet<MVCMovie.Models.MatHang> MatHang { get; set; }
+
+        public DbSet<MVCMovie.Models.Demo> Demo { get; set; }
         
         
     }

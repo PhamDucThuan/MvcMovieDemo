@@ -10,30 +10,22 @@ using MVCMovie.Models;
 
 namespace MVCMovie.Controllers
 {
-    public class MatHangController : Controller
+    public class DemoController : Controller
     {
         private readonly AplicationDBContext _context;
 
-        public MatHangController(AplicationDBContext context)
+        public DemoController(AplicationDBContext context)
         {
             _context = context;
         }
 
-        // GET: MatHang
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Demo
+        public async Task<IActionResult> Index()
         {
-            var mathangs = from m in _context.MatHang
-                        select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                mathangs = mathangs.Where(s => s.TenMatHang.Contains(searchString));
-            }
-
-            return View(await mathangs.ToListAsync());
+            return View(await _context.Demo.ToListAsync());
         }
 
-        // GET: MatHang/Details/5
+        // GET: Demo/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -41,41 +33,48 @@ namespace MVCMovie.Controllers
                 return NotFound();
             }
 
-            var matHang = await _context.MatHang
-                .FirstOrDefaultAsync(m => m.IDMatHang == id);
-            if (matHang == null)
+            var demo = await _context.Demo
+                .FirstOrDefaultAsync(m => m.DemoID == id);
+            if (demo == null)
             {
                 return NotFound();
             }
 
-            return View(matHang);
+            return View(demo);
         }
 
-        // GET: MatHang/Create
+        // GET: Demo/Create
         public IActionResult Create()
         {
-            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryName");
             return View();
         }
 
-        // POST: MatHang/Create
+        // POST: Demo/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IDMatHang,TenMatHang,CategoryID")] MatHang matHang)
+        public async Task<IActionResult> Create([Bind("DemoID,DemoName")] Demo demo)
         {
-            if (ModelState.IsValid)
+            try
+            //cau len co the gay loi
             {
-                _context.Add(matHang);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                  _context.Add(demo);
+                  await _context.SaveChangesAsync();
+                  return RedirectToAction(nameof(Index));
+                }
             }
-            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryName", matHang.CategoryID);
-            return View(matHang);
+            catch
+            {
+                //xu ly loi
+                ModelState.AddModelError("", "Khoa chinh bi trung");
+            }
+            return View(demo);
         }
 
-        // GET: MatHang/Edit/5
+        // GET: Demo/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -83,22 +82,22 @@ namespace MVCMovie.Controllers
                 return NotFound();
             }
 
-            var matHang = await _context.MatHang.FindAsync(id);
-            if (matHang == null)
+            var demo = await _context.Demo.FindAsync(id);
+            if (demo == null)
             {
                 return NotFound();
             }
-            return View(matHang);
+            return View(demo);
         }
 
-        // POST: MatHang/Edit/5
+        // POST: Demo/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("IDMatHang,TenMatHang,CategoryID")] MatHang matHang)
+        public async Task<IActionResult> Edit(string id, [Bind("DemoID,DemoName")] Demo demo)
         {
-            if (id != matHang.IDMatHang)
+            if (id != demo.DemoID)
             {
                 return NotFound();
             }
@@ -107,12 +106,12 @@ namespace MVCMovie.Controllers
             {
                 try
                 {
-                    _context.Update(matHang);
+                    _context.Update(demo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MatHangExists(matHang.IDMatHang))
+                    if (!DemoExists(demo.DemoID))
                     {
                         return NotFound();
                     }
@@ -123,10 +122,10 @@ namespace MVCMovie.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(matHang);
+            return View(demo);
         }
 
-        // GET: MatHang/Delete/5
+        // GET: Demo/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -134,30 +133,30 @@ namespace MVCMovie.Controllers
                 return NotFound();
             }
 
-            var matHang = await _context.MatHang
-                .FirstOrDefaultAsync(m => m.IDMatHang == id);
-            if (matHang == null)
+            var demo = await _context.Demo
+                .FirstOrDefaultAsync(m => m.DemoID == id);
+            if (demo == null)
             {
                 return NotFound();
             }
 
-            return View(matHang);
+            return View(demo);
         }
 
-        // POST: MatHang/Delete/5
+        // POST: Demo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var matHang = await _context.MatHang.FindAsync(id);
-            _context.MatHang.Remove(matHang);
+            var demo = await _context.Demo.FindAsync(id);
+            _context.Demo.Remove(demo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MatHangExists(string id)
+        private bool DemoExists(string id)
         {
-            return _context.MatHang.Any(e => e.IDMatHang == id);
+            return _context.Demo.Any(e => e.DemoID == id);
         }
     }
 }
