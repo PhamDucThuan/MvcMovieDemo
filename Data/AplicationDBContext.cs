@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MVCMovie.Models;
+using MvcMovie.Models;
 
  namespace MVCMovie.Data
  {
@@ -22,8 +23,6 @@ using MVCMovie.Models;
 
         public DbSet<MVCMovie.Models.Product> Product { get; set; }
 
-        public DbSet<MVCMovie.Models.Movie> Movie { get; set; }
-
         public DbSet<MVCMovie.Models.KhachHang> KhachHang { get; set; }
 
         public DbSet<MVCMovie.Models.Category> Category { get; set; }
@@ -31,6 +30,8 @@ using MVCMovie.Models;
         public DbSet<MVCMovie.Models.MatHang> MatHang { get; set; }
 
         public DbSet<MVCMovie.Models.Demo> Demo { get; set; }
+
+        public DbSet<MvcMovie.Models.Movie> Movie { get; set; }
         
         
     }
